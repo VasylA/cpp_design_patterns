@@ -4,10 +4,10 @@
 
 void BuildTestHouse()
 {
-    IWallCreator *brickWallCreator = new BrickWallCreator();
-    IWallCreator *concreteSlabWallCreator = new ConcreteSlabWallCreator();
+    std::shared_ptr<IWallCreator> brickWallCreator = std::make_shared<BrickWallCreator>();
+    std::shared_ptr<IWallCreator> concreteSlabWallCreator = std::make_shared<ConcreteSlabWallCreator>();
 
-    IBuildingCompany *buildingCompany = new BuildingCompany;
+    std::unique_ptr<IBuildingCompany> buildingCompany = std::make_unique<BuildingCompany>();
 
     buildingCompany->buildFoundation();
 
@@ -22,11 +22,6 @@ void BuildTestHouse()
     buildingCompany->buildRoom();
 
     buildingCompany->buildRoof();
-
-    delete concreteSlabWallCreator;
-    delete brickWallCreator;
-
-    delete buildingCompany;
 }
 
 int main()

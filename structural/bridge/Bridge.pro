@@ -1,7 +1,7 @@
 QT += core
 QT -= gui
 
-CONFIG += c++11
+CONFIG += c++17
 
 TARGET = Bridge
 CONFIG += console

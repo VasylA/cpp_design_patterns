@@ -3,32 +3,21 @@
 
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
-BuildingCompany::BuildingCompany()
+void BuildingCompany::buildFoundation() const
 {
+    std::cout << "Foundation is built.\n\n";
 }
 
-BuildingCompany::~BuildingCompany()
+void BuildingCompany::buildRoom() const
 {
+    m_wallCreator->buildWallWithDoor();
+    m_wallCreator->buildWall();
+    m_wallCreator->buildWallWithWindow();
+    m_wallCreator->buildWall();
+    std::cout << "Room is built.\n\n";
 }
 
-void BuildingCompany::buildFoundation()
+void BuildingCompany::buildRoof() const
 {
-    cout << "Foundation is built." << endl << endl;
-}
-
-void BuildingCompany::buildRoom()
-{
-    _wallCreator->buildWallWithDoor();
-    _wallCreator->buildWall();
-    _wallCreator->buildWallWithWindow();
-    _wallCreator->buildWall();
-    cout << "Room is built." << endl << endl;
-}
-
-void BuildingCompany::buildRoof()
-{
-    cout << "Roof is built." << endl << endl;
+    std::cout << "Roof is built.\n\n";
 }

@@ -1,17 +1,14 @@
 #ifndef BUILDINGCOMPANY_H
 #define BUILDINGCOMPANY_H
 
-#include "Ibuildingcompany.h"
+#include "ibuildingcompany.h"
 
 class BuildingCompany : public IBuildingCompany
 {
 public:
-    BuildingCompany();
-    ~BuildingCompany();
-
-    void buildFoundation();
-    void buildRoom();
-    void buildRoof();
+    void buildFoundation() const override;
+    void buildRoom() const override;
+    void buildRoof() const override;
 };
 
 #endif // BUILDINGCOMPANY_H

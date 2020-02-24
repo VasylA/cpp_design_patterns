@@ -2,20 +2,17 @@
 
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
-void BrickWallCreator::buildWall()
+void BrickWallCreator::buildWall() const
 {
-    cout << "Brick wall." << endl;
+    std::cout << "Brick wall.\n";
 }
 
-void BrickWallCreator::buildWallWithDoor()
+void BrickWallCreator::buildWallWithDoor() const
 {
-    cout << "Brick wall with door." << endl;
+    std::cout << "Brick wall with door.\n";
 }
 
-void BrickWallCreator::buildWallWithWindow()
+void BrickWallCreator::buildWallWithWindow() const
 {
-    cout << "Brick wall with window." << endl;
+    std::cout << "Brick wall with window.\n";
 }

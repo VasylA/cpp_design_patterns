@@ -2,20 +2,17 @@
 
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
-void ConcreteSlabWallCreator::buildWall()
+void ConcreteSlabWallCreator::buildWall() const
 {
-    cout << "Concrete slab wall." << endl;
+    std::cout << "Concrete slab wall.\n";
 }
 
-void ConcreteSlabWallCreator::buildWallWithDoor()
+void ConcreteSlabWallCreator::buildWallWithDoor() const
 {
-    cout << "Concrete slab wall with door." << endl;
+    std::cout << "Concrete slab wall with door.\n";
 }
 
-void ConcreteSlabWallCreator::buildWallWithWindow()
+void ConcreteSlabWallCreator::buildWallWithWindow() const
 {
-    cout << "Concrete slab wall with window." << endl;
+    std::cout << "Concrete slab wall with window.\n";
 }

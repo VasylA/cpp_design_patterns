@@ -6,11 +6,9 @@
 class ConcreteSlabWallCreator : public IWallCreator
 {
 public:
-    ConcreteSlabWallCreator() {};
-
-    void buildWall();
-    void buildWallWithDoor();
-    void buildWallWithWindow();
+    void buildWall() const override;
+    void buildWallWithDoor() const override;
+    void buildWallWithWindow() const override;
 };
 
 #endif // CONCRETESLABWALLCREATOR_H

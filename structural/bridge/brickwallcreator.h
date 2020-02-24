@@ -6,11 +6,9 @@
 class BrickWallCreator : public IWallCreator
 {
 public:
-    BrickWallCreator() {}
-
-    void buildWall();
-    void buildWallWithDoor();
-    void buildWallWithWindow();
+    void buildWall() const override;
+    void buildWallWithDoor() const override;
+    void buildWallWithWindow() const override;
 };
 
 #endif // BRICKWALLCREATOR_H
