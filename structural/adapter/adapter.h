@@ -1,28 +1,25 @@
 #ifndef ADAPTER_H
 #define ADAPTER_H
 
+#include "inewelectricitysystem.h"
 #include "oldelectricitysystem.h"
 
-#include <iostream>
-
-using std::cout;
-using std::endl;
-using std::string;
-
-class Adapter: public INewElectricitySystem
+class Adapter : public INewElectricitySystem
 {
 public:
-    Adapter(OldElectricitySystem* adaptee)
+    Adapter(const OldElectricitySystem &adaptee)
+        : _adaptee(adaptee)
     {
-        _adaptee = adaptee;
+        std::cout << "Prepare adapter from old to new socket\n";
     }
-    virtual string matchWideSocket()
+
+    std::string matchWideSocket() const override
     {
-        return _adaptee->matchThinSocket();
+        return "by using adapter for " + _adaptee.matchThinSocket();
     }
 
 private:
-    OldElectricitySystem* _adaptee;
+    const OldElectricitySystem &_adaptee;
 };
 
 #endif // ADAPTER_H

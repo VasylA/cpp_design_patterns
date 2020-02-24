@@ -3,23 +3,18 @@
 
 #include <iostream>
 
-using std::cout;
-using std::endl;
-using std::string;
-
 class OldElectricitySystem
 {
 public:
     OldElectricitySystem()
     {
-        cout << "Old electricity system" << endl;
+        std::cout << "Old electricity system available here\n";
     }
 
-    string matchThinSocket()
+    std::string matchThinSocket() const
     {
-        return "220V";
+        return "thin socket (220V)";
     }
 };
-
 
 #endif // OLDELECTRICITYSYSTEM_H

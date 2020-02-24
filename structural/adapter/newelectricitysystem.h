@@ -1,30 +1,21 @@
 #ifndef NEWELECTRICITYSYSTEM_H
 #define NEWELECTRICITYSYSTEM_H
 
+#include "inewelectricitysystem.h"
+
 #include <iostream>
 
-using std::cout;
-using std::endl;
-using std::string;
-
-
-class INewElectricitySystem
-{
-public:
-    virtual string matchWideSocket() = 0;
-};
-
-class NewElectricitySystem: public INewElectricitySystem
+class NewElectricitySystem : public INewElectricitySystem
 {
 public:
     NewElectricitySystem()
     {
-        cout <<"New electricity system\n";
+        std::cout << "New electricity system used here\n";
     }
 
-    virtual string matchWideSocket()
+    std::string matchWideSocket() const override
     {
-        return "220V";
+        return "wide socket (220V)";
     }
 };
 

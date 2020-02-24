@@ -1,7 +1,7 @@
 QT += core
 QT -= gui
 
-CONFIG += c++11
+CONFIG += c++17
 
 TARGET = Adapter
 CONFIG += console
@@ -12,6 +12,7 @@ TEMPLATE = app
 SOURCES += main.cpp
 
 HEADERS += \
+    inewelectricitysystem.h \
     oldelectricitysystem.h \
     newelectricitysystem.h \
     adapter.h \

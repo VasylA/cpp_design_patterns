@@ -1,21 +1,14 @@
 #ifndef ELECTRICITYCUSTOMER_H
 #define ELECTRICITYCUSTOMER_H
 
-#include "newelectricitysystem.h"
-
-#include <iostream>
-#include <string>
-
-using std::cout;
-using std::endl;
-using std::string;
+#include "inewelectricitysystem.h"
 
 class ElectricityCustomer
 {
 public:
-    static void chargeNoteBook(INewElectricitySystem *electricitySystem)
+    static void chargeNoteBook(const INewElectricitySystem &electricitySystem)
     {
-        cout << electricitySystem->matchWideSocket() << endl;
+        std::cout << "Pluged in " << electricitySystem.matchWideSocket() << std::endl << std::endl;
     }
 };
 
