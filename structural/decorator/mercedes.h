@@ -8,7 +8,7 @@ class Mercedes : public Car
 public:
     Mercedes()
     {
-        _brandName = "Mercedes";
+        m_brandName = "Mercedes";
     }
 };
 

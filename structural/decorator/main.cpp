@@ -2,26 +2,18 @@
 #include "ambulancecar.h"
 #include "superfastcar.h"
 
+#include <memory>
+
 int main()
 {
-    Car *doctorsCar = new Mercedes;
+    std::unique_ptr<Car> doctorsCar = std::make_unique<Mercedes>();
     doctorsCar->go();
 
-    std::cout << std::endl;
-
-    Car *decoratedCar = new AmbulanceCar(doctorsCar);
+    std::unique_ptr<Car> decoratedCar = std::make_unique<AmbulanceCar>(*doctorsCar);
     decoratedCar->go();
 
-    std::cout << std::endl;
-
-    Car *superFastCar = new SuperFastCar(decoratedCar);
+    std::unique_ptr<Car> superFastCar = std::make_unique<SuperFastCar>(*decoratedCar);
     superFastCar->go();
-
-    std::cout << std::endl;
-
-    delete superFastCar;
-    delete decoratedCar;
-    delete doctorsCar;
 
     return 0;
 }

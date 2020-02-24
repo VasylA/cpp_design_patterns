@@ -4,31 +4,18 @@
 #include <iostream>
 #include <string>
 
-using std::cout;
-using std::endl;
-using std::string;
-
 class Car
 {
 public:
-    virtual ~Car() {}
+    virtual ~Car() = default;
 
-    string getBarndName() const
+    virtual void go() const
     {
-        return _brandName;
-    }
-    void setBarndName(const string &value)
-    {
-        _brandName = value;
-    }
-
-    virtual void go()
-    {
-        cout << "I'm " << _brandName << " and I'm on my way..." << endl;
+        std::cout << "\n I'm " << m_brandName << " and I'm on my way...\n";
     }
 
 protected:
-    string _brandName;
+    std::string m_brandName;
 };
 
 #endif // CAR

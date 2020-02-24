@@ -5,21 +5,16 @@
 
 #include "iostream"
 
-using std::cout;
-using std::endl;
-
-class SuperFastCar : public DecoratorCar
+class SuperFastCar : public DecoratedCar
 {
 public:
-    SuperFastCar(Car *decoratedCar)
-        : DecoratorCar(decoratedCar)
-    {
-    }
+    SuperFastCar(const Car &car)
+        : DecoratedCar(car) {}
 
-    void go() override
+    void go() const override
     {
-        DecoratorCar::go();
-        cout << "I have hyper engine. I'm super fast!!" << endl;
+        DecoratedCar::go();
+        std::cout << "I have hyper engine. I'm super fast!!! \n";
     }
 };
 

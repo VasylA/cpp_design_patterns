@@ -5,21 +5,16 @@
 
 #include "iostream"
 
-using std::cout;
-using std::endl;
-
-class AmbulanceCar : public DecoratorCar
+class AmbulanceCar : public DecoratedCar
 {
 public:
-    AmbulanceCar(Car *decoratedCar)
-        : DecoratorCar(decoratedCar)
-    {
-    }
+    AmbulanceCar(const Car &car)
+        : DecoratedCar(car) {}
 
-    void go() override
+    void go() const override
     {
-        DecoratorCar::go();
-        cout << "... beep-beep-beeeeep..." << endl;
+        DecoratedCar::go();
+        std::cout << "... beep-beep-beeeeep...\n";
     }
 };
 
