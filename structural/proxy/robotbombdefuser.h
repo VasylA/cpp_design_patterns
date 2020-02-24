@@ -5,7 +5,7 @@
 class RobotBombDefuser
 {
 public:
-    RobotBombDefuser();
+    virtual ~RobotBombDefuser() = default;
 
     void connectWireless(int communicationWaveLength);
     bool isConnected();
@@ -19,8 +19,8 @@ private:
     bool isConnectedImmitatingConnectivitiyIssues() const;
 
 private:
-    int _robotConfiguredWavelength;
-    bool _isConnected;
+    int m_robotConfiguredWavelength;
+    bool m_isConnected;
 };
 
 #endif // ROBOTBOMBDEFUSER_H

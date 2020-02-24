@@ -4,10 +4,7 @@
 
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
-BombDefuseOperation::BombDefuseOperation()
+void BombDefuseOperation::execute()
 {
     runMainPlan();
 }
@@ -29,15 +26,13 @@ void BombDefuseOperation::runMainPlan()
 
         proxy->defuseBomb();
         opNum++;
-
-        cout << endl;
     }
-    catch (BadConnectionException *e)
+    catch (const BadConnectionException &e)
     {
-        cout << "Exception has been caught with message: ("
-             << e->message()
+        std::cout << "Exception has been caught with message: "
+             << e.what() << std::endl
              << "Decided to have human operate robot there."
-             << endl;
+             << std::endl << std::endl;
         runPlanB(opNum);
     }
 }

@@ -5,7 +5,7 @@
 class BombDefuseOperation
 {
 public:
-    BombDefuseOperation();
+    void execute();
 
 private:
     void runMainPlan();

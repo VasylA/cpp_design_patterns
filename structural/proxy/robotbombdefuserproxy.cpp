@@ -1,57 +1,52 @@
 #include "robotbombdefuserproxy.h"
 #include "badconnectionexception.h"
 
-#include <assert.h>
-
 RobotBombDefuserProxy::RobotBombDefuserProxy(int communicationWaveLength)
-    : _robotBombDefuser(new RobotBombDefuser),
-      _communicationWaveLength(communicationWaveLength)
-{
-}
+    : m_communicationWaveLength(communicationWaveLength) {}
 
 void RobotBombDefuserProxy::walkStraightForward(int steps)
 {
-    ensureConnectedWithRobor();
-    _robotBombDefuser->walkStraightForward(steps);
+    ensureConnectedWithRobot();
+    m_robotBombDefuser->walkStraightForward(steps);
 }
 
 void RobotBombDefuserProxy::turnRight()
 {
-    ensureConnectedWithRobor();
-    _robotBombDefuser->turnRight();
+    ensureConnectedWithRobot();
+    m_robotBombDefuser->turnRight();
 }
 
 void RobotBombDefuserProxy::turnLeft()
 {
-    ensureConnectedWithRobor();
-    _robotBombDefuser->turnLeft();
+    ensureConnectedWithRobot();
+    m_robotBombDefuser->turnLeft();
 }
 
 void RobotBombDefuserProxy::defuseBomb()
 {
-    ensureConnectedWithRobor();
-    _robotBombDefuser->defuseBomb();
+    ensureConnectedWithRobot();
+    m_robotBombDefuser->defuseBomb();
 }
 
-void RobotBombDefuserProxy::ensureConnectedWithRobor()
+void RobotBombDefuserProxy::ensureConnectedWithRobot()
 {
-    if (!_robotBombDefuser)
+    if (!m_robotBombDefuser)
     {
-        _robotBombDefuser = new RobotBombDefuser;
-        _robotBombDefuser->connectWireless(_communicationWaveLength);
+        m_robotBombDefuser = std::make_unique<RobotBombDefuser>();
+        m_robotBombDefuser->connectWireless(m_communicationWaveLength);
     }
 
-    for (int i = 0; i < CONNECTION_ATTEMPTS; i++)
+    for (int i = 0; i < s_connectionAttempts; i++)
     {
-        if (_robotBombDefuser->isConnected())
+        if (m_robotBombDefuser->isConnected())
             break;
 
-        _robotBombDefuser->connectWireless(_communicationWaveLength);
+        m_robotBombDefuser->connectWireless(m_communicationWaveLength);
     }
-//    assert(_robotBombDefuser->isConnected());
-    if (!_robotBombDefuser->isConnected())
+
+    if (!m_robotBombDefuser->isConnected())
     {
-        throw new BadConnectionException("No connection with remote bomb diffeser roobot"
-                                         "could be made after few attempts.");
+        throw BadConnectionException("No connection with remote bomb deffuser robot "
+                                     "could be made after few attempts.");
     }
 }

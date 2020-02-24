@@ -1,21 +1,13 @@
 #ifndef BADCONNECTIONEXCEPTION
 #define BADCONNECTIONEXCEPTION
 
-#include <iostream>
+#include <stdexcept>
 
-using std::string;
-
-class BadConnectionException
+class BadConnectionException : public std::runtime_error
 {
-
 public:
-    BadConnectionException();
-    BadConnectionException(const string &message);
-
-    string message() const;
-
-private:
-    string _message;
+    explicit BadConnectionException(const std::string &message)
+        : std::runtime_error(message) {}
 };
 
 #endif // BADCONNECTIONEXCEPTION

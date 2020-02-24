@@ -3,24 +3,26 @@
 
 #include "robotbombdefuser.h"
 
+#include <memory>
+
 class RobotBombDefuserProxy : public RobotBombDefuser
 {
 public:
     explicit RobotBombDefuserProxy(int communicationWaveLength);
 
-    virtual void walkStraightForward(int steps);
-    virtual void turnRight();
-    virtual void turnLeft();
-    virtual void defuseBomb();
+    void walkStraightForward(int steps) override;
+    void turnRight() override;
+    void turnLeft() override;
+    void defuseBomb() override;
 
 private:
-    void ensureConnectedWithRobor();
+    void ensureConnectedWithRobot();
 
 private:
-    RobotBombDefuser *_robotBombDefuser;
-    int _communicationWaveLength;
+    std::unique_ptr<RobotBombDefuser> m_robotBombDefuser;
+    int m_communicationWaveLength;
 
-    static const int CONNECTION_ATTEMPTS = 3;
+    static const int s_connectionAttempts = 3;
 };
 
 #endif // ROBOTBOMBDEFUSERPROXY_H

@@ -10,8 +10,7 @@ TEMPLATE = app
 SOURCES += main.cpp \
     robotbombdefuser.cpp \
     robotbombdefuserproxy.cpp \
-    bombdefuseoperation.cpp \
-    badconnectionexception.cpp
+    bombdefuseoperation.cpp
 
 HEADERS += \
     robotbombdefuser.h \

@@ -1,52 +1,47 @@
 #include "robotbombdefuser.h"
 
 #include <iostream>
-#include <ctime>
-
-using std::cout;
-using std::endl;
-
-RobotBombDefuser::RobotBombDefuser()
-{
-
-}
+#include <chrono>
+#include <random>
 
 void RobotBombDefuser::connectWireless(int communicationWaveLength)
 {
-    if (communicationWaveLength == _robotConfiguredWavelength)
-        _isConnected = isConnectedImmitatingConnectivitiyIssues();
+    if (communicationWaveLength == m_robotConfiguredWavelength)
+        m_isConnected = isConnectedImmitatingConnectivitiyIssues();
 }
 
 bool RobotBombDefuser::isConnected()
 {
-    _isConnected = isConnectedImmitatingConnectivitiyIssues();
-    return _isConnected;
+    m_isConnected = isConnectedImmitatingConnectivitiyIssues();
+    return m_isConnected;
 }
 
 void RobotBombDefuser::walkStraightForward(int steps)
 {
-    cout << "Did " << steps << " steps forward..." << endl;
+    std::cout << "Did " << steps << " steps forward...\n";
 }
 
 void RobotBombDefuser::turnRight()
 {
-    cout << "Turned right..." << endl;
+    std::cout << "Turned right...\n";
 }
 
 void RobotBombDefuser::turnLeft()
 {
-    cout << "Turned left..." << endl;
+    std::cout << "Turned left...\n";
 }
 
 void RobotBombDefuser::defuseBomb()
 {
-    cout << "Cut red or green or blue wire..." << endl;
+    std::cout << "Cut red or green or blue wire...\n";
 }
 
 bool RobotBombDefuser::isConnectedImmitatingConnectivitiyIssues() const
 {
-    std::srand(std::time(0)); // use current time as seed for random generator
-    int randomVar = std::rand() % 10;
-    return (randomVar < 5);
+    auto seed = std::chrono::steady_clock::now().time_since_epoch().count();
+    std::default_random_engine randEngine(seed);
+    std::uniform_int_distribution<int> distribution(0, 99);
+    auto randNum = static_cast<int>(distribution(randEngine));
+    return (randNum % 2);
 }
 
