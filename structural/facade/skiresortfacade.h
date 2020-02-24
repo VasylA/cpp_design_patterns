@@ -1,23 +1,24 @@
 #ifndef SKIRESORTFACADE_H
 #define SKIRESORTFACADE_H
 
-#include "skirent.h"
+#include "skirentsystem.h"
 #include "hotelbookingsystem.h"
 #include "skiresortticketsystem.h"
+
+#include <memory>
 
 class SkiResortFacade
 {
 public:
     SkiResortFacade();
-    ~SkiResortFacade();
 
-    int organizeAllInclusiveRest(int height, int weight, int feetSize, int skierLevel, int roomQuality);
-    int organizeRestWithOwnSkies(int roomQuality = 3);
+    int organizeAllInclusiveRest(int height, int weight, int feetSize, int skierLevel, int hotelQuality);
+    int organizeRestWithOwnSkies(int hotelQuality = 4);
 
 private:
-    SkiRent *_skiRent;
-    HotelBookingSystem *_hotelBookingSystem;
-    SkiResortTicketSystem *_skiResortTicketSystem;
+    std::unique_ptr<SkiRentSystem>  m_skiRentSystem;
+    std::unique_ptr<HotelBookingSystem> m_hotelBookingSystem;
+    std::unique_ptr<SkiResortTicketSystem> m_skiResortTicketSystem;
 };
 
 #endif // SKIRESORTFACADE_H

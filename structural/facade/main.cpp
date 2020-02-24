@@ -1,18 +1,18 @@
 #include "skiresortfacade.h"
 
 #include <iostream>
-
-using std::cout;
-using std::endl;
+#include <memory>
 
 int main()
 {
-    SkiResortFacade *skiResortFacade = new SkiResortFacade;
-    int restPrice = skiResortFacade->organizeRestWithOwnSkies(5);
+    std::unique_ptr<SkiResortFacade> skiResortFacade = std::make_unique<SkiResortFacade>();
+    auto restPrice = skiResortFacade->organizeRestWithOwnSkies(4);
 
-    cout << "Price for rest with own skies is " << restPrice << endl;
+    std::cout << "Price for rest with own skies is " << restPrice << std::endl;
 
-    delete skiResortFacade;
+    restPrice = skiResortFacade->organizeAllInclusiveRest(175, 65, 40, 5, 5);
+
+    std::cout << "Price for all inclusive rest is " << restPrice << std::endl;
 
     return 0;
 }

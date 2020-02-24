@@ -1,7 +1,7 @@
-#ifndef SKIRENT
-#define SKIRENT
+#ifndef SKIRENTSYSTEM
+#define SKIRENTSYSTEM
 
-class SkiRent
+class SkiRentSystem
 {
 public:
     int rentBoots(int /*feetSize*/, int /*skierLevel*/)
@@ -18,5 +18,4 @@ public:
     }
 };
 
-#endif // SKIRENT
-
+#endif // SKIRENTSYSTEM

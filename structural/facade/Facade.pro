@@ -11,7 +11,7 @@ SOURCES += main.cpp \
     skiresortfacade.cpp
 
 HEADERS += \
-    skirent.h \
+    skirentsystem.h \
     skiresortticketsystem.h \
     hotelbookingsystem.h \
     skiresortfacade.h
