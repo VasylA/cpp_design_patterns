@@ -1,7 +1,7 @@
 #ifndef SUPERFASTCAR
 #define SUPERFASTCAR
 
-#include "decoratorcar.h"
+#include "decoratedcar.h"
 
 #include "iostream"
 
