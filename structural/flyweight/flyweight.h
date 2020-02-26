@@ -5,27 +5,21 @@
 #include "uniquestate.h"
 
 #include <iostream>
+#include <memory>
 
 class Flyweight
 {
 public:
-    Flyweight(const SharedState *shared_state) : m_sharedState(new SharedState(*shared_state))
-    {
-    }
-    Flyweight(const Flyweight &other) : m_sharedState(new SharedState(*other.m_sharedState))
-    {
-    }
-    ~Flyweight()
-    {
-        delete m_sharedState;
-    }
+    Flyweight(const std::shared_ptr<SharedState> shared_state)
+      : m_sharedState(shared_state) {}
+
     void operation(const UniqueState &unique_state) const
     {
         std::cout << "Flyweight: Displaying shared (" << *m_sharedState << ") and unique (" << unique_state << ") state.\n";
     }
 
 private:
-    SharedState *m_sharedState;
+    std::shared_ptr<SharedState> m_sharedState;
 };
 
 #endif // FLYWEIGHT_H
