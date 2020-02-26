@@ -4,11 +4,12 @@
 #include <sstream>
 #include <array>
 
-struct Logo
+struct Image
 {
     std::array<std::uint8_t, 10000> data;
 
-    Logo() {
+    Image()
+    {
         std::fill(data.begin(), data.end(), 1);
     }
 };
@@ -18,11 +19,7 @@ struct SharedState
     std::string brand;
     std::string model;
     std::string color;
-    Logo        logo;
-
-    SharedState(const std::string &aBrand, const std::string &aModel, const std::string &aColor, const Logo &aLogo)
-        : brand(aBrand), model(aModel), color(aColor), logo(aLogo)
-    {}
+    Image       logo;      // Heavy data here
 
     friend std::ostream &operator<<(std::ostream &os, const SharedState &ss)
     {

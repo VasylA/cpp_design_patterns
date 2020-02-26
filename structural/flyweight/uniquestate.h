@@ -6,16 +6,11 @@
 struct UniqueState
 {
     std::string owner;
-    std::string plates;
-
-    UniqueState(const std::string &anOwner, const std::string &aPlate)
-        : owner(anOwner), plates(aPlate)
-    {
-    }
+    std::string plate;
 
     friend std::ostream &operator<<(std::ostream &os, const UniqueState &us)
     {
-        return os << "[ " << us.owner << " , " << us.plates << " ]";
+        return os << "[ " << us.owner << " , " << us.plate << " ]";
     }
 };
 

@@ -3,25 +3,25 @@
 #include <memory>
 
 void AddCarToPoliceDatabase(FlyweightFactory &factory,
-                            const std::string &plates,
+                            const std::string &plate,
                             const std::string &owner,
                             const std::string &brand,
                             const std::string &model,
                             const std::string &color,
-                            const Logo        &logo)
+                            const Image       &logo)
 {
     std::cout << "\nClient: Adding a car to database.\n";
     const Flyweight &flyweight = factory.getFlyweight({brand, model, color, logo});
 
-    flyweight.operation({plates, owner});
+    flyweight.operation({plate, owner});
 }
 
 
 int main()
 {
-    Logo bmwLogo;
-    Logo mercedesLogo;
-    Logo chevroletLogo;
+    Image bmwLogo;
+    Image mercedesLogo;
+    Image chevroletLogo;
     auto factory = std::make_unique<FlyweightFactory>(std::initializer_list<SharedState>(
     {
         {"Chevrolet", "Camaro2018", "pink", chevroletLogo},
