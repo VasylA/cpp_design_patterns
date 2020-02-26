@@ -12,7 +12,7 @@ SOURCES += main.cpp
 HEADERS += \
     car.h \
     mercedes.h \
-    decoratorcar.h \
+    decoratedcar.h \
     ambulancecar.h \
     superfastcar.h
 
